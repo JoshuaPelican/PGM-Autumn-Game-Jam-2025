@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &1401910711111541161
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: thrusterFire_002_{1401910711111541161}
+  m_AudioClip: {fileID: 8300000, guid: d72bdf75f97d72b4cb269aaac43725f9, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &3095000342765462599
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: thrusterFire_000_{3095000342765462599}
+  m_AudioClip: {fileID: 8300000, guid: c91b7cc6055103c44ab5c4b06d1ebb49, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Jetpack Audio
+  m_Volume: -20
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: -2, y: 2}
+  m_PitchRandomizationRange: {x: -50, y: 50}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 3095000342765462599}
+  - {fileID: 9066033378255205831}
+  - {fileID: 1401910711111541161}
+  - {fileID: 8216639795375348786}
+  m_AvoidRepeatingLast: 1
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 0
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &8216639795375348786
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: thrusterFire_004_{8216639795375348786}
+  m_AudioClip: {fileID: 8300000, guid: 1c07eecf924e1db4f84fda878d961d1d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &9066033378255205831
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: thrusterFire_001_{9066033378255205831}
+  m_AudioClip: {fileID: 8300000, guid: dd9ca7c80bda0ed4bbd2b9173c16946d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-3908030266924825951
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 15755_1460486786_{-3908030266924825951}
+  m_AudioClip: {fileID: 8300000, guid: aca568ab57476004eb13a7a86f49192b, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2060258110995193942
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 15756_1460486786_{2060258110995193942}
+  m_AudioClip: {fileID: 8300000, guid: a58b3edeb0d403a4a863df562d3cfbf2, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Retatch Audio
+  m_Volume: -10.6
+  m_Pitch: 998
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: -2, y: 2}
+  m_PitchRandomizationRange: {x: -50, y: 50}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -3908030266924825951}
+  - {fileID: 2060258110995193942}
+  - {fileID: 8249176315562495309}
+  - {fileID: 7786859871330584737}
+  m_AvoidRepeatingLast: 1
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 0
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &7786859871330584737
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 15758_1460486786_{7786859871330584737}
+  m_AudioClip: {fileID: 8300000, guid: 97ffea79cf430d841a9f03a9ebb8afed, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &8249176315562495309
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 15757_1460486786_{8249176315562495309}
+  m_AudioClip: {fileID: 8300000, guid: 7963807cfeacc5d4baed52be6f9aecfa, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
