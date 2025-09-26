@@ -1,19 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class Rope : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] float nodeDistance = 0.2f;
     [SerializeField] int totalNodes = 50;
     [SerializeField] float ropeWidth = 0.1f;
     [SerializeField] int iterationCount = 80;
     [SerializeField] float dampingFactor = 0.95f;
-
     [SerializeField] Vector2 gravity = new Vector2(0f, -5f);
-
-
-    [SerializeField] ContactFilter2D contactFilter;
     [SerializeField] float collidionDetectRadius = 0.25f;
+    [SerializeField] ContactFilter2D contactFilter;
 
 
     List<RopeNode> ropeNodes = new List<RopeNode>();
@@ -22,16 +21,12 @@ public class Rope : MonoBehaviour
     Vector3[] linePositions;
     public Vector3[] LinePositions => linePositions;
 
-    Camera Camera;
-
     RaycastHit2D[] RaycastHitBuffer = new RaycastHit2D[10];
     Collider2D[] ColliderHitBuffer = new Collider2D[10];
 
 
     void Awake()
     {
-        Camera = Camera.main;
-
         lineRenderer = this.GetComponent<LineRenderer>();
 
         // Generate some rope nodes based on properties
@@ -64,8 +59,8 @@ public class Rope : MonoBehaviour
             ApplyConstraint();
 
             // Playing around with adjusting collisions at intervals - still stable when iterations are skipped
-            //if (i % 2 == 1)
-            AdjustCollisions();
+            if (i % 2 == 1)
+                AdjustCollisions();
         }
     }
 

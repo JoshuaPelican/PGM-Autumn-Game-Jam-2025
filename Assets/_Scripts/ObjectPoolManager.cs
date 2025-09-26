@@ -4,6 +4,12 @@ using UnityEngine.Pool;
 
 public class ObjectPoolManager : MonoBehaviour
 {
+    #region Singleton
+
+    public static ObjectPoolManager Instance { get; private set; }
+
+    #endregion
+
     static Dictionary<GameObject, ObjectPool<GameObject>> _objectPools;
     static Dictionary<string, Transform> _objectPoolContainers;
     static Dictionary<GameObject, GameObject> _prefabMap;
@@ -16,6 +22,20 @@ public class ObjectPoolManager : MonoBehaviour
 
     private void Awake()
     {
+        #region Singleton
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        #endregion
 
         _objectPools = new();
         _objectPoolContainers = new();
@@ -27,6 +47,7 @@ public class ObjectPoolManager : MonoBehaviour
     void Setup()
     {
         _poolsContainer = new GameObject("Pools").transform;
+        _poolsContainer.SetParent(transform);
     }
 
     static void CreatePool(GameObject prefab, Vector3 pos, Quaternion rot, string poolID = GAMEOBJ_POOL_ID)

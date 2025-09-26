@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] InteractUser interactUser;
+    [SerializeField] PickupUser pickupUser;
     [SerializeField] Rope tether;
     [SerializeField] ParticleSystem movePSystem;
     
@@ -25,7 +27,6 @@ public class PlayerController : MonoBehaviour
     float rotationDirection = 0;
     bool isMoving = false;
     float moveTimer = 0;
-    bool isInteracting = false;
 
     public void OnRotate(InputAction.CallbackContext context)
     {
@@ -50,10 +51,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        isInteracting = context.started;
-
-        if (isInteracting)
+        if (context.started)
+        {
             Interact();
+            Pickup();
+        }
     }
 
     private void FixedUpdate()
@@ -64,13 +66,7 @@ public class PlayerController : MonoBehaviour
             Move();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(isInteracting && collision.TryGetComponent(out Interactable interactable))
-        {
-            interactable.Interact();
-        }
-    }
+
 
     public void AttachTether(Rope rope)
     {
@@ -119,7 +115,16 @@ public class PlayerController : MonoBehaviour
     void Interact()
     {
         // TODO: Physics2D Overlap Collider for interactable trigger colliders
+        interactUser.TryInteract();
         AudioManager.Instance.PlayClip2D(interactAudio, "interactPlayer");
+
+
+    }
+
+    void Pickup()
+    {
+        pickupUser.TryPickup();
+        AudioManager.Instance.PlayClip2D(interactAudio, "pickupPlayer");
     }
 
     void StopMoving()

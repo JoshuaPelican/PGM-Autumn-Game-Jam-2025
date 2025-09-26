@@ -7,24 +7,31 @@ using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
+    #region Singleton
+
     public static AudioManager Instance { get; private set; }
+
+    #endregion
 
     [SerializeField] AudioMixer audioMixer;
 
-    AudioSource audioSourcePrefab;
+    static AudioSource audioSourcePrefab;
     static Dictionary<string, AudioSource> activeSources;
 
     private void Awake()
     {
+        #region Singleton
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
             return;
         }
+        #endregion
 
         InitializeSources();
     }
@@ -32,6 +39,7 @@ public class AudioManager : MonoBehaviour
     void InitializeSources()
     {
         GameObject sourceGO = new GameObject($"Audio Source Base");
+        DontDestroyOnLoad(sourceGO);
         sourceGO.transform.SetParent(transform);
         audioSourcePrefab = sourceGO.AddComponent<AudioSource>();
 
