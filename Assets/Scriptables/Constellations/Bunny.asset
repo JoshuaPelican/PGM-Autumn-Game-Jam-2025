@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6b8ce23c4ce5044a087f31620064f9, type: 3}
   m_Name: Bunny
   m_EditorClassIdentifier: 
+  Icon: {fileID: 7701126621766596727, guid: e3e895c57e3ebfe4b9374d5b5152230a, type: 3}
   Stars:
   - Position: {x: -6.48, y: 3.89}
     Magnitude: 1.7320508

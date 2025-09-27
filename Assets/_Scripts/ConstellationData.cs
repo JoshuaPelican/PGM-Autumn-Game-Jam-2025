@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Constellation", menuName = "Scriptables/Constellation")]
 public class ConstellationData : ScriptableObject
 {
+    public Sprite Icon;
     public List<StarData> Stars = new ();
     public List<Vector2Int> Lines = new ();
 }

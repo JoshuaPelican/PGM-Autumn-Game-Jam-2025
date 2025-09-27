@@ -7,6 +7,8 @@ public class Interactable : MonoBehaviour
     public UnityEvent OnInteract = new UnityEvent();
     public UnityEvent OnInteractEnter = new UnityEvent();
     public UnityEvent OnInteractExit = new UnityEvent();
+    public UnityEvent OnInteractSelected = new UnityEvent();
+    public UnityEvent OnInteractDeselected = new UnityEvent();
 
     public void Interact()
     {
@@ -21,5 +23,15 @@ public class Interactable : MonoBehaviour
     public void InteractExit()
     {
         OnInteractExit?.Invoke();
+    }
+
+    public void InteractSelected()
+    {
+        OnInteractSelected?.Invoke();
+    }
+
+    public void InteractDeselected()
+    {
+        OnInteractDeselected?.Invoke();
     }
 }

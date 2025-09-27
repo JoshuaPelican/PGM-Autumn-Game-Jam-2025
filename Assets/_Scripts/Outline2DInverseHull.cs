@@ -42,4 +42,10 @@ public class Outline2DInverseHull : MonoBehaviour
     {
         outlineRenderer.gameObject.SetActive(active);
     }
+
+    public void SetColor(string color)
+    {
+        ColorUtility.TryParseHtmlString(color, out Color parsedColor);
+        outlineRenderer.color = parsedColor;
+    }
 }

@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] InteractUser interactUser;
     [SerializeField] PickupUser pickupUser;
-    [SerializeField] Rope tether;
     [SerializeField] ParticleSystem movePSystem;
     
     [Header("Audio")]
@@ -45,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDetatch(InputAction.CallbackContext context)
     {
-        if (tether != null && context.started)
+        if (context.started)
             Detatch();
     }
 
@@ -64,19 +63,6 @@ public class PlayerController : MonoBehaviour
             Rotate();
         if (isMoving)
             Move();
-    }
-
-
-
-    public void AttachTether(Rope rope)
-    {
-        if (tether != null)
-            return;
-
-        tether = rope;
-        tether.transform.SetParent(transform);
-        tether.transform.localPosition = Vector3.zero;
-        AudioManager.Instance.PlayClip2D(reattachAudio, "reattach");
     }
 
 
@@ -107,18 +93,14 @@ public class PlayerController : MonoBehaviour
 
     void Detatch()
     {
-        tether.transform.SetParent(null);
-        tether = null;
-        AudioManager.Instance.PlayClip2D(detachAudio, "detatch");
+        pickupUser.TryDrop();
+        AudioManager.Instance.PlayClip2D(detachAudio, "dropPlayer");
     }
 
     void Interact()
     {
-        // TODO: Physics2D Overlap Collider for interactable trigger colliders
         interactUser.TryInteract();
         AudioManager.Instance.PlayClip2D(interactAudio, "interactPlayer");
-
-
     }
 
     void Pickup()

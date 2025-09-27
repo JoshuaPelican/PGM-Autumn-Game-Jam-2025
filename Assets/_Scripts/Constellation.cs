@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class Constellation : MonoBehaviour
 {
-    public const float SCALE = 0.15f;
     public const float LINE_RESOLUTION = 0.1f;
 
+    [Header("Settings")]
     [SerializeField] ConstellationData constellationToSpawn;
+    [SerializeField] float scale = 0.15f;
+    [SerializeField] bool showPreview = false;
+
+    [Header("References")]
     [SerializeField] Transform StarPrefab;
     [SerializeField] LineRenderer LinePrefab;
 
@@ -31,14 +35,18 @@ public class Constellation : MonoBehaviour
     {
         foreach (StarData starData in constellationToSpawn.Stars)
         {
-            Transform star = Instantiate(StarPrefab, (Vector3)(starData.Position * SCALE) + transform.position, Quaternion.identity, transform);
+            Transform star = Instantiate(StarPrefab, (Vector3)(starData.Position * scale) + transform.position, Quaternion.identity, transform);
             star.localScale *= starData.Magnitude;
         }
+
+        if (!showPreview)
+            return;
+
         int n = 0;
         foreach (var line in constellationToSpawn.Lines)
         {
-            Vector2 pos1 = constellationToSpawn.Stars[line.x].Position * SCALE + (Vector2)transform.position;
-            Vector2 pos2 = constellationToSpawn.Stars[line.y].Position * SCALE + (Vector2)transform.position;
+            Vector2 pos1 = constellationToSpawn.Stars[line.x].Position * scale + (Vector2)transform.position;
+            Vector2 pos2 = constellationToSpawn.Stars[line.y].Position * scale + (Vector2)transform.position;
 
             LineRenderer lineRend = Instantiate(LinePrefab, transform);
             lineRend.name = $"Line {++n}";
@@ -63,8 +71,8 @@ public class Constellation : MonoBehaviour
 
         foreach (var line in constellationToSpawn.Lines)
         {
-            Vector2 pos1 = constellationToSpawn.Stars[line.x].Position * SCALE + (Vector2)transform.position;
-            Vector2 pos2 = constellationToSpawn.Stars[line.y].Position * SCALE + (Vector2)transform.position;
+            Vector2 pos1 = constellationToSpawn.Stars[line.x].Position * scale + (Vector2)transform.position;
+            Vector2 pos2 = constellationToSpawn.Stars[line.y].Position * scale + (Vector2)transform.position;
 
             float dist = Vector2.Distance(pos1, pos2);
 

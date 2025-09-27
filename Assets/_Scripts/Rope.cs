@@ -36,7 +36,7 @@ public class Rope : MonoBehaviour
             RopeNode node = new RopeNode(startPosition);
             ropeNodes.Add(node);
 
-            startPosition.y -= nodeDistance/7f;
+            //startPosition.y -= nodeDistance/7f;
         }
 
         // for line renderer data

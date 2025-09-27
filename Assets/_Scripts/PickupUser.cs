@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class PickupUser : InteractUser
 {
-    [SerializeField] Transform heldItemContainer;
+    [SerializeField] Transform heldPickupContainer;
+    [SerializeField] Pickupable heldPickup;
 
     public bool IsPickingUp { get; private set; } = false;
     public bool IsDropping { get; private set; } = false;
 
     public bool IsHolding => HeldPickup != null;
-    public Pickupable HeldPickup { get; private set; }
+    public Pickupable HeldPickup => heldPickup;
+
+    Pickupable closestPickup;
+    float closestPickupDistance = float.MaxValue;
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,7 +21,9 @@ public class PickupUser : InteractUser
         if (!collision.TryGetComponent(out Pickupable pickup))
             return;
 
-        pickup.PickupEnter();
+        GetClosestPickup(pickup);
+
+        closestPickup.PickupEnter();
     }
 
     protected override void OnTriggerStay2D(Collider2D collision)
@@ -32,8 +38,10 @@ public class PickupUser : InteractUser
         if (!collision.TryGetComponent(out Pickupable pickup))
             return;
 
-        pickup.Pickup();
-        Pickup(pickup);
+        GetClosestPickup(pickup);
+
+        closestPickup.Pickup();
+        Pickup(closestPickup);
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
@@ -44,6 +52,12 @@ public class PickupUser : InteractUser
             return;
 
         pickup.PickupExit();
+        if (pickup == closestPickup)
+        {
+            closestPickup = null;
+            closestPickupDistance = float.MaxValue;
+        }
+
     }
 
     private void FixedUpdate()
@@ -53,9 +67,10 @@ public class PickupUser : InteractUser
 
         IsDropping = false;
 
-        if (HeldPickup == null)
+        if (!IsHolding)
             return;
 
+        heldPickup.Drop();
         Drop();
     }
 
@@ -69,27 +84,38 @@ public class PickupUser : InteractUser
         IsDropping = true;
     }
 
+    void GetClosestPickup(Pickupable pickup)
+    {
+        float dist = (pickup.transform.position - transform.position).sqrMagnitude;
+        if (closestPickupDistance < dist)
+            return;
+
+        closestPickup = pickup;
+        closestPickupDistance = dist;
+    }
+
     void Pickup(Pickupable pickup)
     {
-        if(HeldPickup != null)
+        if(IsHolding)
         {
             // Drop the current item or just not let user do it
             Drop();
         }
 
-        pickup.transform.SetParent(heldItemContainer);
+        heldPickup = pickup;
+        pickup.transform.SetParent(heldPickupContainer);
         pickup.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
     public void Drop()
     {
-        if(HeldPickup == null)
+        if(!IsHolding)
         {
             // Nothing to drop
             return;
         }
 
-        HeldPickup.transform.SetParent(null);
-        HeldPickup = null;
+        heldPickup.transform.SetParent(null);
+        heldPickup = null;
     }
 }
