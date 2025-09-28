@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioPlayable jetpackAudio;
     [SerializeField] AudioPlayable jetpackInitialAudio;
-    [SerializeField] AudioPlayable detachAudio;
-    [SerializeField] AudioPlayable reattachAudio;
     [SerializeField] AudioPlayable interactAudio; 
 
 
@@ -45,7 +43,7 @@ public class PlayerController : MonoBehaviour
     public void OnDetatch(InputAction.CallbackContext context)
     {
         if (context.started)
-            Detatch();
+            Drop();
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -54,6 +52,11 @@ public class PlayerController : MonoBehaviour
         {
             Interact();
             Pickup();
+        }
+        if (context.canceled)
+        {
+            StopInteract();
+            StopPickup();
         }
     }
 
@@ -91,10 +94,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Detatch()
+    void Drop()
     {
         pickupUser.TryDrop();
-        AudioManager.Instance.PlayClip2D(detachAudio, "dropPlayer");
     }
 
     void Interact()
@@ -103,10 +105,19 @@ public class PlayerController : MonoBehaviour
         AudioManager.Instance.PlayClip2D(interactAudio, "interactPlayer");
     }
 
+    void StopInteract()
+    {
+        interactUser.StopInteract();
+    }
+
+    void StopPickup()
+    {
+        pickupUser.StopPickup();
+    }
+
     void Pickup()
     {
         pickupUser.TryPickup();
-        AudioManager.Instance.PlayClip2D(interactAudio, "pickupPlayer");
     }
 
     void StopMoving()

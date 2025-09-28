@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -26,10 +27,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] float validDistance = 0.25f;
 
     [Header("References")]
-    [SerializeField] Rope tether;
-    [SerializeField] Constellation constellation;
     [SerializeField] AudioPlayable backgroundMusic;
     [SerializeField] AudioPlayable backgroundAmbience;
+    [SerializeField] AudioPlayable verifyFailAudio;
+    [SerializeField] AudioPlayable verifySuccessAudio;
+    [SerializeField] AudioPlayable rocketLeavingAudio;
 
     private void Start()
     {
@@ -39,6 +41,10 @@ public class GameManager : MonoBehaviour
 
     public void ValidateConstallation()
     {
+        Rope tether = GameObject.Find("Tether").GetComponent<Rope>();
+        Constellation constellation = GameObject.FindFirstObjectByType<Constellation>();
+
+
         foreach (Vector2 constellationPoint in constellation.LinePoints)
         {
             bool isPointValidated = false;
@@ -54,15 +60,30 @@ public class GameManager : MonoBehaviour
 
             if (isPointValidated == false)
             {
+                AudioManager.Instance.PlayClip2D(verifyFailAudio, "verifyFail");
                 // Validation Failed!
-                Debug.Log("VALIDATION FAILED!!");
+                //Debug.Log("VALIDATION FAILED!!");
                 return;
             }
         }
 
         // Constellation points are all near a tether point!
-        Debug.Log("VALIDATION PASSED!!");
-
+        AudioManager.Instance.PlayClip2D(verifySuccessAudio, "verifySuccess");
+        //Debug.Log("VALIDATION PASSED!!");
+        StartCoroutine(nameof(WinLevel));
         //return true;
+    }
+
+    IEnumerator WinLevel()
+    {
+        GameObject player = GameObject.Find("Player");
+        player.SetActive(false);
+
+        AudioManager.Instance.PlayClip2D(rocketLeavingAudio, "rocketLeaving");
+        //Play some sort of animation.
+
+        yield return new WaitForSeconds(5.8f);
+
+        SceneManager.Instance.LoadScene(0, null);
     }
 }

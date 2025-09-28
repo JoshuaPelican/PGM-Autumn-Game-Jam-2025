@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.16226411, g: 0.16226411, b: 0.16226411, a: 1}
   m_FlipX: 0
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.25, g: 0.38461542, b: 0.5, a: 1}
   m_FlipX: 0
@@ -433,6 +433,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdc8ed079ea90d4780e5443855c8986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactAudio:
+    audioResource: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    SpacialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    MixerGroupName: SFX
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -532,6 +539,7 @@ MonoBehaviour:
           m_StringArgument: grey
           m_BoolArgument: 0
         m_CallState: 2
+  trigger: {fileID: 3468217129443337053}
 --- !u!114 &8333948764645246470
 MonoBehaviour:
   m_ObjectHideFlags: 0

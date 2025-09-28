@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -25,9 +26,25 @@ public class Rope : MonoBehaviour
     Collider2D[] ColliderHitBuffer = new Collider2D[10];
 
 
-    void Awake()
+    void Start()
     {
         lineRenderer = this.GetComponent<LineRenderer>();
+
+        // VERY HACKY TO FINISH GAME
+        if(SceneManager.Instance.ScenePayload != null)
+        {
+            ConstellationData constellation = (ConstellationData)SceneManager.Instance.ScenePayload.payload.Find(x => x.Key == "ConstellationToLoad").Value;
+            if (constellation != null)
+            {
+                float constLength = 0;
+                foreach (Vector2Int line in constellation.Lines)
+                {
+                    constLength += Vector2.Distance(constellation.Stars[line.x].Position * 1.5f, constellation.Stars[line.y].Position * 1.5f);
+                }
+                constLength += constellation.Stars.Sum(x => x.Magnitude * 0.25f * 2 * Mathf.PI);
+                totalNodes = Mathf.CeilToInt(constLength / nodeDistance);
+            }
+        }
 
         // Generate some rope nodes based on properties
         Vector3 startPosition = transform.position;

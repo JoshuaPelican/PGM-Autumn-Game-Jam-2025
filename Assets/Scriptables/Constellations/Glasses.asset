@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6b8ce23c4ce5044a087f31620064f9, type: 3}
+  m_Name: Glasses
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 1720d01679c5422458e5239ba9a37501, type: 3}
+  Stars:
+  - Position: {x: -9.56, y: -0.12}
+    Magnitude: 1.7320508
+  - Position: {x: -6.9800005, y: 2.12}
+    Magnitude: 1.7320508
+  - Position: {x: -4.1200004, y: -0.4599999}
+    Magnitude: 1.7320508
+  - Position: {x: -6.8900003, y: -2.6}
+    Magnitude: 1.7320508
+  - Position: {x: -1.1400003, y: 4.17}
+    Magnitude: 1.7320508
+  - Position: {x: 0.1699996, y: -1.42}
+    Magnitude: 1.7320508
+  - Position: {x: 2.4999995, y: -4.25}
+    Magnitude: 1.7320508
+  - Position: {x: 5.7599993, y: -2.51}
+    Magnitude: 1.7320508
+  - Position: {x: 3.3399997, y: 0.66}
+    Magnitude: 1.7320508
+  - Position: {x: 7.9699984, y: 2.16}
+    Magnitude: 1.7320508
+  - Position: {x: 11, y: 2.4}
+    Magnitude: 1.7320508
+  - Position: {x: 1.2, y: 2.81}
+    Magnitude: 1.7320508
+  Lines:
+  - {x: 0, y: 1}
+  - {x: 1, y: 2}
+  - {x: 2, y: 3}
+  - {x: 0, y: 3}
+  - {x: 0, y: 4}
+  - {x: 4, y: 11}
+  - {x: 2, y: 5}
+  - {x: 5, y: 6}
+  - {x: 6, y: 7}
+  - {x: 7, y: 8}
+  - {x: 8, y: 5}
+  - {x: 7, y: 9}
+  - {x: 9, y: 10}

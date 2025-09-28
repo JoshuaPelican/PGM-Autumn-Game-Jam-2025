@@ -166,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 00b8ce4a201871b498992f536279acf7, type: 3}
   m_Color: {r: 1, g: 0.6691773, b: 0, a: 1}
   m_FlipX: 0
@@ -213,7 +213,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!114 &1683297667454498630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +242,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cbd79cd5c2f7fc4190104d7486f95e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactAudio:
+    audioResource: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    SpacialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    MixerGroupName: 
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -260,6 +267,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1683297667454498630}
+        m_TargetAssemblyTypeName: Outline2DInverseHull, Assembly-CSharp
+        m_MethodName: SetColor
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: grey
+          m_BoolArgument: 1
+        m_CallState: 2
   OnInteractExit:
     m_PersistentCalls:
       m_Calls:
@@ -275,20 +294,63 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInteractSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1683297667454498630}
+        m_TargetAssemblyTypeName: Outline2DInverseHull, Assembly-CSharp
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1683297667454498630}
+        m_TargetAssemblyTypeName: Outline2DInverseHull, Assembly-CSharp
+        m_MethodName: SetColor
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: green
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnInteractDeselected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1683297667454498630}
+        m_TargetAssemblyTypeName: Outline2DInverseHull, Assembly-CSharp
+        m_MethodName: SetColor
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: grey
+          m_BoolArgument: 0
+        m_CallState: 2
+  trigger: {fileID: 2010747426141629834}
   pickupAudio:
-    audioResource: {fileID: 0}
+    audioResource: {fileID: 6418180475301049370, guid: 780abd363f5b25743b20e50b58abbe67, type: 2}
     Position: {x: 0, y: 0, z: 0}
     SpacialBlend: 0
     MinDistance: 0
     MaxDistance: 0
-    MixerGroupName: 
+    MixerGroupName: SFX
   dropAudio:
-    audioResource: {fileID: 0}
+    audioResource: {fileID: 6418180475301049370, guid: d7055a9f6d06b294c95c9bcac4f49b2a, type: 2}
     Position: {x: 0, y: 0, z: 0}
     SpacialBlend: 0
     MinDistance: 0
     MaxDistance: 0
-    MixerGroupName: 
+    MixerGroupName: SFX
   OnPickup:
     m_PersistentCalls:
       m_Calls:

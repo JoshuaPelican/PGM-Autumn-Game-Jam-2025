@@ -19,32 +19,30 @@ public class InteractUser : MonoBehaviour
         if (!collision.TryGetComponent(out Interactable interactable))
             return;
 
-        GetClosestInteract(interactable);
+        GetClosestInteractable(interactable);
 
         interactable.InteractEnter();
     }
 
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
-        if (!IsInteracting)
-            return;
+        if (collision.TryGetComponent(out Interactable interactable))
+        {
+            GetClosestInteractable(interactable);
+
+            if (IsInteracting)
+            {
+                closestInteractable.Interact();
+            }
+        }
 
         IsInteracting = false;
-
-        if (!collision.TryGetComponent(out Interactable interactable))
-            return;
-
-        GetClosestInteract(interactable);
-
-        closestInteractable.Interact();
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.TryGetComponent(out Interactable interactable))
             return;
-
-        GetClosestInteract(interactable);
 
         interactable.InteractExit();
         if (interactable == closestInteractable)
@@ -55,13 +53,13 @@ public class InteractUser : MonoBehaviour
 
     }
 
-    void GetClosestInteract(Interactable interactable)
+    void GetClosestInteractable(Interactable interactable)
     {
         float dist = (interactable.transform.position - transform.position).sqrMagnitude;
         if (closestInteractDistance < dist)
             return;
 
-        if(closestInteractable)
+        if(closestInteractable && interactable != closestInteractable)
             closestInteractable.InteractDeselected();
 
         closestInteractable = interactable;
@@ -73,5 +71,10 @@ public class InteractUser : MonoBehaviour
     public void TryInteract()
     {
         IsInteracting = true;
+    }
+
+    public void StopInteract()
+    {
+        IsInteracting = false;
     }
 }

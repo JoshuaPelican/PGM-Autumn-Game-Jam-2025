@@ -118,7 +118,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.58, y: -1.84, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1517045754727223937}
@@ -208,6 +208,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdc8ed079ea90d4780e5443855c8986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactAudio:
+    audioResource: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    SpacialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    MixerGroupName: 
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -307,6 +314,7 @@ MonoBehaviour:
           m_StringArgument: grey
           m_BoolArgument: 0
         m_CallState: 2
+  trigger: {fileID: 0}
 --- !u!114 &8325334192151421067
 MonoBehaviour:
   m_ObjectHideFlags: 0

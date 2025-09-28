@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6b8ce23c4ce5044a087f31620064f9, type: 3}
+  m_Name: Flower
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 7366617892383084551, guid: f6f03a7c58cbf5741b83526ee0ffc401, type: 3}
+  Stars:
+  - Position: {x: -3.5, y: -1.9}
+    Magnitude: 1.732051
+  - Position: {x: 0, y: 0.07000005}
+    Magnitude: 1.7320508
+  - Position: {x: 3.52, y: -1.77}
+    Magnitude: 1.7320508
+  - Position: {x: 0, y: -6}
+    Magnitude: 1.7320508
+  - Position: {x: 0, y: 4.07}
+    Magnitude: 1.7320508
+  - Position: {x: 1.69, y: 5.2000003}
+    Magnitude: 1.7320508
+  - Position: {x: -0.08, y: 6.3}
+    Magnitude: 1.7320508
+  - Position: {x: -1.77, y: 4.86}
+    Magnitude: 1.7320508
+  Lines:
+  - {x: 0, y: 1}
+  - {x: 1, y: 2}
+  - {x: 1, y: 3}
+  - {x: 1, y: 4}
+  - {x: 4, y: 5}
+  - {x: 4, y: 7}
+  - {x: 5, y: 6}
+  - {x: 6, y: 7}

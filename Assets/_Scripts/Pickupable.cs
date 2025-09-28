@@ -13,20 +13,25 @@ public class Pickupable : Interactable
     public UnityEvent OnPickupEnter = new();
     public UnityEvent OnPickupExit = new();
 
-
     public void Pickup()
     {
+        trigger.enabled = false;
+
         OnPickup?.Invoke();
+        
         if (pickupAudio.audioResource)
             AudioManager.Instance.PlayClip2D(pickupAudio, $"pickup_{name}");
     }
 
     public void Drop()
     {
+        trigger.enabled = true;
+
         OnDrop?.Invoke();
 
         if (dropAudio.audioResource)
             AudioManager.Instance.PlayClip2D(dropAudio, $"drop_{name}");
+
     }
 
     public void PickupEnter()

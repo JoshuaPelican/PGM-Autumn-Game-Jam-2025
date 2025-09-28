@@ -30,18 +30,18 @@ public class PickupUser : InteractUser
     {
         base.OnTriggerStay2D(collision);
 
-        if (!IsPickingUp)
-            return;
+        if (collision.TryGetComponent(out Pickupable pickup))
+        {
+            GetClosestPickup(pickup);
+
+            if (IsPickingUp)
+            {
+                Pickup(closestPickup);
+            }
+        }
+
 
         IsPickingUp = false;
-
-        if (!collision.TryGetComponent(out Pickupable pickup))
-            return;
-
-        GetClosestPickup(pickup);
-
-        closestPickup.Pickup();
-        Pickup(closestPickup);
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
@@ -70,13 +70,17 @@ public class PickupUser : InteractUser
         if (!IsHolding)
             return;
 
-        heldPickup.Drop();
         Drop();
     }
 
     public void TryPickup()
     {
         IsPickingUp = true;
+    }
+
+    public void StopPickup()
+    {
+        IsPickingUp = false;
     }
 
     public void TryDrop()
@@ -103,6 +107,7 @@ public class PickupUser : InteractUser
         }
 
         heldPickup = pickup;
+        heldPickup.Pickup();
         pickup.transform.SetParent(heldPickupContainer);
         pickup.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
@@ -115,6 +120,7 @@ public class PickupUser : InteractUser
             return;
         }
 
+        heldPickup.Drop();
         heldPickup.transform.SetParent(null);
         heldPickup = null;
     }
